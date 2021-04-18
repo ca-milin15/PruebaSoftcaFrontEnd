@@ -1,0 +1,7 @@
+{
+  "name": "modulo-usuario-softcaribbean",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
