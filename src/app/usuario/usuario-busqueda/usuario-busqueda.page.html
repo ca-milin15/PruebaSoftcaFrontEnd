@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>usuario-busqueda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">ID del usuario</ion-label>
+    <ion-input [(ngModel)]="txtUsuarioId" type="number"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="consultarUsuarioPorId(txtUsuarioId)">Consultar</ion-button>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{datosUsuario.nombreCompletoPersona}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      ID usuario: {{datosUsuario.id}} <br>
+      Username: {{datosUsuario.nombreUsuario}} <br>
+      Código: {{datosUsuario.codigoUsuario}}
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-fab size="small" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button size="small">
+      <i class="fa fa-home" aria-hidden="true"></i>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

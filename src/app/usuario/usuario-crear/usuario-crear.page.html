@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>usuario-crear</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Nombre del usuario</ion-label>
+    <ion-input [(ngModel)]="objetoCrearUsuario.nombreUsuario" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Codigo del usuario</ion-label>
+    <ion-input [(ngModel)]="objetoCrearUsuario.codigoUsuario" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Nombre completo del usuario</ion-label>
+    <ion-input [(ngModel)]="objetoCrearUsuario.nombreCompletoPersona" type="text"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="crearUsuario(objetoCrearUsuario)">Crear usuario</ion-button>
+  
+</ion-content>
