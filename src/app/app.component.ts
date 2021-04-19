@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Búsqueda usuario', url: '/usuario-busqueda', icon: 'user' },
-    { title: 'Crear usuario', url: '/usuario-crear', icon: 'user' },
+    { title: 'Búsqueda usuario', url: '/usuario-busqueda', icon: 'search' },
+    { title: 'Crear usuario', url: '/usuario-crear', icon: 'person-add' },
   ];
   constructor() {}
 }

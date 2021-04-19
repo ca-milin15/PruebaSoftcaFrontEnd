@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioServiceService } from 'src/app/usuario-service.service'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-usuario-crear',
@@ -9,9 +10,9 @@ import { UsuarioServiceService } from 'src/app/usuario-service.service'
 export class UsuarioCrearPage implements OnInit {
 
   objetoCrearUsuario = {}
-  respuestaCreacionUsuario = {}
+  respuestaCreacionUsuario = null
 
-  constructor(private usuarioService: UsuarioServiceService) { }
+  constructor(private usuarioService: UsuarioServiceService, private alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,20 @@ export class UsuarioCrearPage implements OnInit {
   crearUsuario(objetoCrearUsuario){
     this.usuarioService.crearUsuario(objetoCrearUsuario).subscribe((data) => {
       this.respuestaCreacionUsuario = data
-      console.log(this.respuestaCreacionUsuario)
+      this.objetoCrearUsuario = {}
+      this.presentAlert()
     })
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Exito!',
+      subHeader: 'Operación exitosa!',
+      message: 'El usuario se ha creado correctamente.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

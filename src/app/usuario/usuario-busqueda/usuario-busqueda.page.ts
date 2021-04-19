@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioServiceService } from 'src/app/usuario-service.service'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-usuario-busqueda',
@@ -8,7 +9,7 @@ import { UsuarioServiceService } from 'src/app/usuario-service.service'
 })
 export class UsuarioBusquedaPage implements OnInit {
 
-  datosUsuario = {}
+  datosUsuario = null
   respuestaSmiluacion = {
     id: '12',
     nombreCompletoPersona: 'Camilo Rivera Ladino',
@@ -16,17 +17,30 @@ export class UsuarioBusquedaPage implements OnInit {
     codigoUsuario: 'US001'
   }
 
-  constructor(private usuarioService: UsuarioServiceService) { }
+  constructor(private usuarioService: UsuarioServiceService, private alertController: AlertController) { }
 
   ngOnInit() {
   }
 
   consultarUsuarioPorId(usuario){
-    
-    this.datosUsuario = this.respuestaSmiluacion
-    /*this.usuarioService.buscarUsuarioporId(usuario).subscribe((data) => {
-      this.datosUsuario = data
-      console.log(this.datosUsuario)
-    })*/
+    if(usuario){
+      this.usuarioService.buscarUsuarioporId(usuario).subscribe((data) => {
+        this.datosUsuario = data
+      })
+    } else {
+      this.presentAlert('Alerta', 'No se ejecutó la consulta', 'Debe completar el campo ID de usuario.')
+    }
+  }
+
+  async presentAlert(titulo, subtitulo, mensaje) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: titulo,
+      subHeader: subtitulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

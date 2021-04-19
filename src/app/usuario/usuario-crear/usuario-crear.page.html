@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>usuario-crear</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Creación Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,4 +23,16 @@
 
   <ion-button expand="full" (click)="crearUsuario(objetoCrearUsuario)">Crear usuario</ion-button>
   
+   <ion-card *ngIf="respuestaCreacionUsuario !== null">
+    <ion-card-header>
+      <ion-card-title>{{respuestaCreacionUsuario.nombreCompletoPersona}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      ID usuario: {{respuestaCreacionUsuario.id}} <br>
+      Username: {{respuestaCreacionUsuario.nombreUsuario}} <br>
+      Código: {{respuestaCreacionUsuario.codigoUsuario}} <br>
+      Estado: {{respuestaCreacionUsuario.estado}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

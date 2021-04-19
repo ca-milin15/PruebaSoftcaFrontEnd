@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>usuario-busqueda</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Búsqueda Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +14,7 @@
   </ion-item>
   <ion-button expand="full" (click)="consultarUsuarioPorId(txtUsuarioId)">Consultar</ion-button>
   
-  <ion-card>
+  <ion-card *ngIf="datosUsuario != null">
     <ion-card-header>
       <ion-card-title>{{datosUsuario.nombreCompletoPersona}}</ion-card-title>
     </ion-card-header>
@@ -19,13 +22,16 @@
     <ion-card-content>
       ID usuario: {{datosUsuario.id}} <br>
       Username: {{datosUsuario.nombreUsuario}} <br>
-      Código: {{datosUsuario.codigoUsuario}}
+      Código: {{datosUsuario.codigoUsuario}}<br>
+      Estado: {{datosUsuario.estado}}
+      <ion-fab class="float-button">
+        <ion-fab-button size="small" routerLink="/usuario-crear">
+          <ion-icon name="pencil"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
     </ion-card-content>
   </ion-card>
   
-  <ion-fab size="small" vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button size="small">
-      <i class="fa fa-home" aria-hidden="true"></i>
-    </ion-fab-button>
-  </ion-fab>
+
+
 </ion-content>
