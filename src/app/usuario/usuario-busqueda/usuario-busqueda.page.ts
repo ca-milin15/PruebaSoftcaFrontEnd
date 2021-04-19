@@ -26,6 +26,12 @@ export class UsuarioBusquedaPage implements OnInit {
     if(usuario){
       this.usuarioService.buscarUsuarioporId(usuario).subscribe((data) => {
         this.datosUsuario = data
+      }, error => {
+        if(error.status == 500){
+          this.presentAlert('Alerta', 'No se ejecutó la consulta', 'Se presentó un error inesperado en el servidor.')
+        } else if(error.status == 404){
+          this.presentAlert('Alerta', 'No se encontraron resultados', 'No se encontraron resultados por el ID ingresado.')
+        }
       })
     } else {
       this.presentAlert('Alerta', 'No se ejecutó la consulta', 'Debe completar el campo ID de usuario.')

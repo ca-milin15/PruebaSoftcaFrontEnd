@@ -19,4 +19,8 @@ export class UsuarioServiceService {
   crearUsuario(objetoUsuario){
     return this.http.post(this.urlBase + this.urlUsuarioModulo, objetoUsuario)
   }
+
+  actualizarUsuario(usuarioId, objetoUsuario){
+    return this.http.put(this.urlBase + this.urlUsuarioModulo + '/' + usuarioId, objetoUsuario)
+  }
 }
